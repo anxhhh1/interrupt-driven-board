@@ -1,0 +1,40 @@
+#define YEllow 8
+#define REd 7
+#define GREen 12
+
+int inC = 0 ; 
+
+void setup()
+{
+  pinMode(YEllow , OUTPUT);
+  pinMode(REd , OUTPUT);
+  pinMode(GREen , OUTPUT);
+  
+  digitalWrite(YEllow , 0); 
+  digitalWrite(REd , 0); 
+  digitalWrite(GREen , 0); 
+
+  attachInterrupt(0 , ChnageInt ,RISING);
+  
+}
+
+void loop()
+{
+  inC++; 
+  
+  digitalWrite(YEllow,1);
+  digitalWrite(REd ,1);
+  
+  delay(300);
+  
+  if(inC == 10)
+  {
+    inC = 0; 
+    digitalWrite(GREen , 0);
+  }
+}
+
+void ChnageInt()
+{
+	digitalWrite(GREen ,1);
+}
